@@ -1,45 +1,24 @@
-//your JS code here. If required.
-let current1 = document.getElementById("square1");
-let current2 = document.getElementById("square2");
-let current3 = document.getElementById("square3");
+const squares = document.querySelectorAll(".square");
 
-//for square 1
- // when mouse enters the element
-    square1.addEventListener("mouseenter", () => {
-     current2.classList.add("change-color");
-		current3.classList.add("change-color");
+// Colors
+const lavender = "#E6E6FA";
+const coffee = "#6F4E37";
+
+// Loop through each square
+squares.forEach((sq) => {
+  // When mouse enters one square
+  sq.addEventListener("mouseover", () => {
+    squares.forEach((otherSq) => {
+      if (otherSq !== sq) {
+        otherSq.style.backgroundColor = coffee;
+      }
     });
+  });
 
-    // when mouse leaves the element
-    square1.addEventListener("mouseleave", () => {
-     current2.classList.remove("change-color");
-		current3.classList.remove("change-color");
-    });
-
-//for square2
-
- // when mouse enters the element
-    square2.addEventListener("mouseenter", () => {
-     current1.classList.add("change-color");
-		current3.classList.add("change-color");
-    });
-
-    // when mouse leaves the element
-    square2.addEventListener("mouseleave", () => {
-     current1.classList.remove("change-color");
-		current3.classList.remove("change-color");
-    });
-
-//for square 3
-
- // when mouse enters the element
-    square3.addEventListener("mouseenter", () => {
-     current1.classList.add("change-color");
-		current2.classList.add("change-color");
-    });
-
-    // when mouse leaves the element
-    square3.addEventListener("mouseleave", () => {
-     current1.classList.remove("change-color");
-		current2.classList.remove("change-color");
-    });
+  // When mouse leaves that square
+  sq.addEventListener("mouseout", () => {
+    squares.forEach((s) => {
+      s.style.backgroundColor = lavender;
+    });
+  });
+});
